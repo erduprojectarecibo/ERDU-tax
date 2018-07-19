@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ERDU Tax Calculator</title>
+  <!-- Vendors -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <!-- My files -->
+  <link rel="stylesheet" href="resources/css/style.min.css">
+  <script src="resources/js/main.min.js"></script>
+</head>
+
+<body>
+  <div id="progress-bar" class="hide progress">
+    <div class="indeterminate"></div>
+  </div>
+  <!-- content -->
+  <div class="container center center-content">
+    <img height="100" width="100" src="resources/img/erdu-logo.svg" alt="erdu's logo">
+    <h3>ERDU Tax Calculator</h3>
+    <h5>Ingreso Neto Sujeto a Contribución</h5>
+    <h5>Taxable Income</h5>
+    <form id="tax-form" class="center-content">
+      <div class="input-field">
+        <i class="material-icons prefix">attach_money</i>
+        <label for="ingreso_neto">Input</label>
+        <input type="number" id="ingreso_neto" autoComplete="off" />
+      </div>
+      <button id="calculate_btn" class="waves-effect waves-light btn" type="submit">
+        Calculate
+        <i class="material-icons right">input</i>
+      </button>
+    </form>
+  </div>
+  <!-- Description -->
+  <div class="container center">
+    <div class="page center-content shadow">
+      <h5>ERDU Tax Calculator</h5>
+      <strong>Comparación “Tax Brackets” de Puerto Rico y Estados Unidos</strong>
+      <span style="width:100%;" class="space-between">
+        <p>Prof. Nicolás Ramos Gandía</p>
+        <p>Junio 2018</p>
+      </span>
+      <p>
+        La reforma del código contributivo de un país, cuando es completa, es un documento voluminoso que tiende a opacar la pregunta
+        más importante que nos debemos hacer los contribuyentes. ¿Cómo los cambios en la Tabla Contributiva (“Tax Brackets”)
+        afectarán, positivamente o negativamente, la contribución determinada y la tasa efectiva que pagaremos?
+      </p>
+      <p>
+        En términos sencillos la Tabla Contributiva nos indica la fórmula que se aplicará para el cálculo de la contribución determinada
+        (“Tax due”) según el intervalo en donde se encuentra el valor de nuestro ingreso neto sujeto a contribución (“taxable
+        income”). El ingreso neto sujeto a contribución es la cantidad remanente luego de aplicar a los sueldos (“wages”)
+        las exenciones y deducciones que corresponden según nuestro estatus contributivo (individuo, casado o viudo).
+      </p>
+      <p>
+        La tasa contributiva en cada “Tax Brackets” se llama la tasa marginal y es el por ciento (entiéndase los centavos) que pagamos
+        por cada dólar adicional de ingreso. Por otro lado, la tasa efectiva es el por ciento que representa la contribución
+        total determinada respecto al ingreso neto sujeto a contribución. Esto es, cuánto pagamos por cada dólar de incremento
+        en el ingreso neto sujeto a contribución.
+      </p>
+      <p>
+        En Puerto Rico para el año contributivo 2017 un individuo no casado (“single filers”) tiene una exención personal de $3,500
+        y en el sistema contributivo federal de los Estados Unidos tiene una deducción estándar de $6,350 y una exención
+        personal de $4,050. El sistema federal para el año 2018, luego de la reforma aprobada en diciembre 2017, el individuo
+        tendrá solamente una deducción estándar de $12,000.
+      </p>
+      <p>
+        Este año el gobierno de Puerto Rico ha propuesto un proyecto de reforma contributiva ( P. de la C. 1544) donde se reconfiguran
+        los “Tax Brackets” y se disminuyen las tasas marginales correspondientes, pero se elimina la exención personal para
+        individuo de $7,000.00. Aun así, la reducción en la tasa efectiva varía entre 2% y 5%.
+      </p>
+      <p>
+        En la ERDU Tax Calculator (calculadora de contribución comparada), con simplemente escribir la cantidad del ingreso neto
+        sujeto a contribución de un individuo no casado (“single filers”) podrás comparar la contribución determinada en
+        los cuatro escenarios mencionados arriba.
+      </p>
+      <p>
+        La aplicación presenta, en una tabla, la contribución determinada y la tasa efectiva correspondiente según la reforma propuesta
+        para el 2018 en Puerto Rico y la vigente del 2017. Luego, le sigue el resultado a base de la reforma contributiva
+        del gobierno federal en los Estados Unidos para el año contributivo 2018 y la vigente del 2017.
+      </p>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div id="modal" class="modal bottom-sheet modal-fixed-footer">
+    <div class="modal-content">
+      <table id="result_table" class="center-align bordered highlight centered">
+        <thead>
+          <tr>
+            <th class="center-align">Tax Year</th>
+            <th class="center-align">Taxable Income</th>
+            <th class="center-align">Tax</th>
+            <th class="center-align">Effective Tax Rate</th>
+          </tr>
+        </thead>
+        <tbody id="table-body" style="overflow: scroll;">
+
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button id="close-modal" class="waves-effect waves-teal btn-flat">Close</button>
+    </div>
+  </div>
+</body>
+
+</html>
